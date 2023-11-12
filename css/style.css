@@ -29,9 +29,10 @@ ul,ol{
 .colors_div{
     width: 30%;
     height: 200px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    font-size: 30px;
 }
 /* Color generator end */

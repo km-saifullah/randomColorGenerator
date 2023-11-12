@@ -1,17 +1,20 @@
 // main div
 let mainDiv = document.querySelector('.main_div');
 
-// minimum and maximum number
-let maximum = 255;
-let minimum = 0;
+// generate random number between 0 and 255
+let generateRandomNumber = () => {
+    let maximum = 255;
+    let minimum = 0;
+    let randomNumber = Math.floor(Math.random()*(maximum-minimum+1)) + minimum ;
+    return randomNumber;
+}
 
 // generate RGB colors
 let generateColors = () => {
-    for(let divCount=0; divCount<12;divCount++){
-        // generate random number between 0 and 255 for RGB values
-        let red = Math.floor(Math.random()*(maximum-minimum+1)) + minimum ;
-        let green = Math.floor(Math.random()*(maximum-minimum+1)) + minimum ;
-        let blue = Math.floor(Math.random()*(maximum-minimum+1)) + minimum ;
+    for(let divCount = 0; divCount < 12; divCount++){
+        let red = generateRandomNumber();
+        let green = generateRandomNumber();
+        let blue = generateRandomNumber();
 
         let bgColor = `rgb(${red},${green},${blue})`;
         let coloredDiv = document.createElement('div');
@@ -22,15 +25,35 @@ let generateColors = () => {
 }
 generateColors();
 
+// select individual div and find out the RGB color
 let newDiv = document.querySelectorAll('.colors_div');
 let newDivArr = Array.from(newDiv);
-
-newDivArr.map((item,index)=>{
-    item.addEventListener('click',()=>{
-        let color = (item.style.backgroundColor);
-        console.log(color);
-        item.innerHTML = color;
+newDivArr.map(item => {
+    item.addEventListener('click', () => {
+        let rgbColor = (item.style.backgroundColor);
+        item.innerText = rgbColor;
+    });
+    // double click event to show the hex color
+    item.addEventListener('dblclick', () => {
+        let rgbColor = (item.style.backgroundColor);
+        let removeRGB = rgbColor.replaceAll("rgb(",""); 
+        let removeBracket = removeRGB.replace(")",""); 
+        let splitRgb = removeBracket.split(",");
+        let red = Number(splitRgb[0]);
+        let green = Number(splitRgb[1]);
+        let blue = Number(splitRgb[2]);
+        console.log(red,green,blue);
+        rgbToHex(red);
+        item.innerHTML = rgbColor;
     })
-})
+});
+
+// convert RGB color to Hexadecimal color
+let rgbToHex = (color) => {
+    let wholeNumber = color;
+    let decimalPortion = wholeNumber / 16;
+    console.log(decimalPortion);
+    console.log(decimalPortion % 16 );
+}
 
 
