@@ -32,6 +32,9 @@ newDivArr.map(item => {
     item.addEventListener('click', () => {
         let rgbColor = (item.style.backgroundColor);
         item.innerText = rgbColor;
+
+        // copy to clipboard
+        copyToClipboard(item.innerHTML)
     });
     // double click event to show the hex color
     item.addEventListener('dblclick', () => {
@@ -46,9 +49,12 @@ newDivArr.map(item => {
         let greenHexaValue = rgbToHex(green);
         let blueHexaValue = rgbToHex(blue);
         let hexaColor = `#${redHexaValue}${greenHexaValue}${blueHexaValue}`;
-        copyToClipboard('.colors_div');
         item.innerHTML = hexaColor;
-    })
+        item.value = hexaColor;
+
+        // copy to clipboard
+        copyToClipboard(item.innerHTML);
+    });
 });
 
 // convert RGB color to Hexadecimal color
@@ -59,9 +65,9 @@ let rgbToHex = (color) => {
 }
 
 // copy to clipboard
-let copyToClipboard = (selector)=> {
-    var copyText = document.querySelector(selector).value;
-    navigator.clipboard.writeText(copyText).then(() => {
-        alert("Copied to clipboard");
+let copyToClipboard = (hexValue)=> {
+    let copyText = hexValue;
+        navigator.clipboard.writeText(copyText).then(() => {
+            // alert('Copied to clipboard')
     });
 }
