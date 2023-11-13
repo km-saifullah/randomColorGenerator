@@ -18,6 +18,12 @@ ul,ol{
 .colorGenerator{
     padding: 20px 0;
 }
+.main_heading{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
+}
 .main_div{
     width: 100%;
     display: flex;
@@ -28,7 +34,7 @@ ul,ol{
 }
 .colors_div{
     width: 30%;
-    height: 200px;
+    height: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
