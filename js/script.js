@@ -1,8 +1,21 @@
-// main div
+// div elements
 let mainDiv = document.querySelector('.main_div');
+let output = document.querySelector('.output');
 
 // audio file
 let audio = new Audio('./audio/pickSound.wav');
+
+// hide output div
+output.style.display = 'none';
+
+// show output
+let showOutput = () => {
+    output.style.display = 'block';
+    output.innerHTML = 'Copied✔️';
+    setTimeout(() => {
+        output.style.display = 'none';
+    }, 1000);  
+}
 
 // generate random number between 0 and 255
 let generateRandomNumber = () => {
@@ -18,7 +31,6 @@ let generateColors = () => {
         let red = generateRandomNumber();
         let green = generateRandomNumber();
         let blue = generateRandomNumber();
-
         let bgColor = `rgb(${red},${green},${blue})`;
         let coloredDiv = document.createElement('div');
         coloredDiv.classList.add('colors_div');
@@ -38,6 +50,7 @@ newDivArr.map(item => {
         // copy to clipboard
         copyToClipboard(item.innerHTML);
         audio.play();
+        showOutput();
     });
     // double click event to show the hex color
     item.addEventListener('dblclick', () => {
@@ -57,6 +70,7 @@ newDivArr.map(item => {
         // copy to clipboard
         copyToClipboard(item.innerHTML);
         audio.play();
+        showOutput();
     });
 });
 

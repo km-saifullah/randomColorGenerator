@@ -17,6 +17,7 @@ ul,ol{
 /* Color generator start */
 .colorGenerator{
     padding: 20px 0;
+    position: relative;
 }
 .main_heading{
     text-align: center;
@@ -40,5 +41,20 @@ ul,ol{
     justify-content: center;
     cursor: pointer;
     font-size: 30px;
+}
+.output{
+    height: 80px;
+    width: 100%;
+    background-color: rgba(16, 14, 14, 0.8);
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
 }
 /* Color generator end */
