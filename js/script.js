@@ -42,12 +42,11 @@ newDivArr.map(item => {
         let red = Number(splitRgb[0]);
         let green = Number(splitRgb[1]);
         let blue = Number(splitRgb[2]);
-        console.log('red:',red," ",'green:',green," ",'blue:',blue);
         let redHexaValue = rgbToHex(red);
         let greenHexaValue = rgbToHex(green);
         let blueHexaValue = rgbToHex(blue);
-        let hexaColor = `#${redHexaValue}${greenHexaValue}${blueHexaValue}`
-        console.log('Hexa color:',hexaColor);
+        let hexaColor = `#${redHexaValue}${greenHexaValue}${blueHexaValue}`;
+        copyToClipboard('.colors_div');
         item.innerHTML = hexaColor;
     })
 });
@@ -59,4 +58,10 @@ let rgbToHex = (color) => {
     return hexa;
 }
 
-
+// copy to clipboard
+let copyToClipboard = (selector)=> {
+    var copyText = document.querySelector(selector).value;
+    navigator.clipboard.writeText(copyText).then(() => {
+        alert("Copied to clipboard");
+    });
+}
