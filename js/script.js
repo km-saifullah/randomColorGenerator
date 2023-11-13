@@ -1,6 +1,9 @@
 // main div
 let mainDiv = document.querySelector('.main_div');
 
+// audio file
+let audio = new Audio('./audio/pickSound.wav');
+
 // generate random number between 0 and 255
 let generateRandomNumber = () => {
     let maximum = 255;
@@ -32,9 +35,9 @@ newDivArr.map(item => {
     item.addEventListener('click', () => {
         let rgbColor = (item.style.backgroundColor);
         item.innerText = rgbColor;
-
         // copy to clipboard
-        copyToClipboard(item.innerHTML)
+        copyToClipboard(item.innerHTML);
+        audio.play();
     });
     // double click event to show the hex color
     item.addEventListener('dblclick', () => {
@@ -51,9 +54,9 @@ newDivArr.map(item => {
         let hexaColor = `#${redHexaValue}${greenHexaValue}${blueHexaValue}`;
         item.innerHTML = hexaColor;
         item.value = hexaColor;
-
         // copy to clipboard
         copyToClipboard(item.innerHTML);
+        audio.play();
     });
 });
 
@@ -68,6 +71,5 @@ let rgbToHex = (color) => {
 let copyToClipboard = (hexValue)=> {
     let copyText = hexValue;
         navigator.clipboard.writeText(copyText).then(() => {
-            // alert('Copied to clipboard')
     });
 }
